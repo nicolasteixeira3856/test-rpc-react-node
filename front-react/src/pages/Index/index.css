@@ -4,3 +4,15 @@ h1 {
     justify-content: center;
     margin: 1em;
 }
+
+p {
+    margin-left: 15px;
+}
+
+.logo {
+    max-width: 100px;
+}
+
+.image {
+    max-width: stretch;
+}

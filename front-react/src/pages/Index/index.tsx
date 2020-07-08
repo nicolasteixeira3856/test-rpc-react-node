@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import moment from 'moment';
+import 'moment-timezone';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Accordion from '@material-ui/core/Accordion';
@@ -22,7 +23,8 @@ interface Entries {
     description: string,
     human_start_time: string,
     human_end_time: string,
-    duration_in_minutes: string
+    duration_in_minutes: string,
+    custom_info: any
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -45,38 +47,64 @@ const Index = () => {
 
     const classes = useStyles();
 
+    const [entries, setEntries] = useState<Entries[]>([]);
+
     useEffect(() => {
         axios.get("https://epg-api.video.globo.com/programmes/1337?date=2020-07-07").then(response => {
-            console.log(response);
+            const entries = response.data.programme.entries.map(((entries: any) => entries));
+            setEntries(entries);
         })
         .catch(error => {
             console.log(error);
         })
-    }, []);    
+    }, []);
+
+    function handleActiveProgram(startTime: string, endTime: string) {
+        const localTimeNow = moment().local();
+        const startTimeFormatted = moment(localTimeNow.toISOString().slice(0,10) + ' ' + startTime).local();
+        const endTimeFormatted = moment(localTimeNow.toISOString().slice(0,10) + ' ' + endTime).local();
+
+        if ( localTimeNow.isBetween(startTimeFormatted, endTimeFormatted) ) {
+            return true;
+        }
+
+        return false;
+    }
+
+    function getHourBrasiliaTimeZone (startTime: string) {
+        const localTimeNow = moment().local();
+        const startTimeFormatted = moment(localTimeNow.toISOString().slice(0,10) + ' ' + startTime).local();
+        return startTimeFormatted.format("HH:mm");
+    }
 
     return (
         <div className={classes.root}>
             <Container maxWidth="md">
-                <Grid spacing={3}>
+                <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <h1>Teste Prático - RPC</h1>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Accordion>
-                            <AccordionSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header">
-                                <Typography className={classes.heading}>Accordion 1</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <Typography>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                                sit amet blandit leo lobortis eget.
-                                </Typography>
-                            </AccordionDetails>
-                        </Accordion>
-                    </Grid>
+                    </Grid>                         
+                    {entries.map((entries) => (
+                        <Grid item xs={12} key={entries.id}>
+                            <Accordion>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header">
+                                    <img className="logo" src={entries.custom_info.Graficos.LogoURL} alt={entries.title}/>
+                                    <Typography className={classes.heading}>&nbsp;&nbsp; {handleActiveProgram(entries.human_start_time, entries.human_end_time) ? 'Exibindo agora - ' : ''} {getHourBrasiliaTimeZone(entries.human_start_time)} - {entries.title}</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Grid item xs={6}>
+                                        <img className="image" src={entries.custom_info.Graficos.ImagemURL} alt={entries.title}/>
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                        <p>{entries.description}</p>
+                                    </Grid>
+                                </AccordionDetails>
+                            </Accordion>          
+                        </Grid>
+                    ))}
                 </Grid>
             </Container>
         </div>
