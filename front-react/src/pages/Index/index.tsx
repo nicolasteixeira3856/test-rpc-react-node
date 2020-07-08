@@ -63,17 +63,15 @@ const Index = () => {
         const startTimeFormatted = moment(localTimeNow.toISOString().slice(0,10) + ' ' + startTime).local();
         const endTimeFormatted = moment(localTimeNow.toISOString().slice(0,10) + ' ' + endTime).local();
 
-        if ( localTimeNow.isBetween(startTimeFormatted, endTimeFormatted) ) {
+        if (localTimeNow.isBetween(startTimeFormatted, endTimeFormatted)) {
             return true;
         }
 
         return false;
     }
 
-    function getHourBrasiliaTimeZone (startTime: string) {
-        const localTimeNow = moment().local();
-        const startTimeFormatted = moment(localTimeNow.toISOString().slice(0,10) + ' ' + startTime).local();
-        return startTimeFormatted.format("HH:mm");
+    function getStartTimeBrasiliaTimeZone (startTime: string) {
+        return moment(moment().local().toISOString().slice(0,10) + ' ' + startTime).local().format("HH:mm");
     }
 
     return (
@@ -91,7 +89,7 @@ const Index = () => {
                                     aria-controls={entries.media_id.toString()}
                                     id={entries.media_id.toString()}>
                                     <img className="logo" src={entries.custom_info.Graficos.LogoURL} alt={entries.title}/>
-                                    <Typography className={classes.heading}>&nbsp;&nbsp; {handleActiveProgram(entries.human_start_time, entries.human_end_time) ? <span className="liveNow"> <MdLiveTv></MdLiveTv> EXIBINDO AGORA - </span> : ''} {getHourBrasiliaTimeZone(entries.human_start_time)} - {entries.title}</Typography>
+                                    <Typography className={classes.heading}>&nbsp;&nbsp; {handleActiveProgram(entries.human_start_time, entries.human_end_time) ? <span className="liveNow"> <MdLiveTv></MdLiveTv> EXIBINDO AGORA - </span> : ''} {getStartTimeBrasiliaTimeZone(entries.human_start_time)} - {entries.title}</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
                                     <Grid item xs={6}>
