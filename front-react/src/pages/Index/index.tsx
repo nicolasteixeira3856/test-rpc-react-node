@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import moment from 'moment';
 import 'moment-timezone';
 
@@ -11,6 +10,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { MdLiveTv } from 'react-icons/md';
 
 import './index.css'
 
@@ -18,7 +18,7 @@ import api from '../../services/api';
 
 
 interface Entries {
-    id: number,
+    media_id: number,
     title: string,
     description: string,
     human_start_time: string,
@@ -46,11 +46,10 @@ const useStyles = makeStyles((theme) => ({
 const Index = () => {
 
     const classes = useStyles();
-
     const [entries, setEntries] = useState<Entries[]>([]);
 
     useEffect(() => {
-        axios.get("https://epg-api.video.globo.com/programmes/1337?date=2020-07-07").then(response => {
+        api.get("/getRPCProgramming/" + moment().local().format("YYYY-MM-DD")).then(response => {
             const entries = response.data.programme.entries.map(((entries: any) => entries));
             setEntries(entries);
         })
@@ -82,17 +81,17 @@ const Index = () => {
             <Container maxWidth="md">
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
-                        <h1>Teste Prático - RPC</h1>
+                        <h1>Programação - RPC</h1>
                     </Grid>                         
                     {entries.map((entries) => (
-                        <Grid item xs={12} key={entries.id}>
+                        <Grid item xs={12} key={entries.media_id}>
                             <Accordion>
                                 <AccordionSummary
                                     expandIcon={<ExpandMoreIcon />}
-                                    aria-controls="panel1a-content"
-                                    id="panel1a-header">
+                                    aria-controls={entries.media_id.toString()}
+                                    id={entries.media_id.toString()}>
                                     <img className="logo" src={entries.custom_info.Graficos.LogoURL} alt={entries.title}/>
-                                    <Typography className={classes.heading}>&nbsp;&nbsp; {handleActiveProgram(entries.human_start_time, entries.human_end_time) ? 'Exibindo agora - ' : ''} {getHourBrasiliaTimeZone(entries.human_start_time)} - {entries.title}</Typography>
+                                    <Typography className={classes.heading}>&nbsp;&nbsp; {handleActiveProgram(entries.human_start_time, entries.human_end_time) ? <span className="liveNow"> <MdLiveTv></MdLiveTv> EXIBINDO AGORA - </span> : ''} {getHourBrasiliaTimeZone(entries.human_start_time)} - {entries.title}</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
                                     <Grid item xs={6}>

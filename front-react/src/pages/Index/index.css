@@ -16,3 +16,7 @@ p {
 .image {
     max-width: stretch;
 }
+
+.liveNow {
+    color: #EE6649;
+}
