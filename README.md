@@ -10,7 +10,7 @@ Para alcançar uma qualidade melhor de visualização para o usuário final deci
 Para executar:
   - npm install
   - npm run dev
-OBS: O servidor executará em: http://localhost:3333
+  - O servidor executará em: http://localhost:3333
   
 Dependências e motivos de utilização das mesmas:
   - express: para acelerar o desenvolvimento da API com conceitos como rotas, MVC, cors e etc
@@ -26,7 +26,7 @@ Melhorias desejadas:
 Para executar:
   - npm install
   - npm start
-OBS: O projeto react executará em: http://localhost:3000
+  - O projeto react executará em: http://localhost:3000
   
 Dependências e motivos de utilização das mesmas:
   - material-ui-react: acelerar o processo de desenvolvimento com componentes prontos
@@ -41,4 +41,5 @@ Melhorias desejadas:
   - Adicionar um input do tipo date no começo da página, que seja definido a principio para o dia da data que o usuário entrar no site, mas que dê a opção de alterar para qualquer dia e mês que desejar
   - Adicionar uma sessão de "em instantes" para caso ocorra o que está mencionado na seção de bugs conhecidos desse readme
   - Efetuar alteração da trativa do JSON de retorno da API RPC para o back-end
+  - Adicionar um spinner de loading caso o projeto ainda não tenha finalizado a requisição para o back-end
   
