@@ -89,7 +89,7 @@ const Index = () => {
                                     aria-controls={entries.media_id.toString()}
                                     id={entries.media_id.toString()}>
                                     <img className="logo" src={entries.custom_info.Graficos.LogoURL} alt={entries.title}/>
-                                    <Typography className={classes.heading}>&nbsp;&nbsp; {handleActiveProgram(entries.title, entries.human_start_time, entries.human_end_time) ? <span className="liveNow"> <MdLiveTv></MdLiveTv> EXIBINDO AGORA </span> : ''} - {entries.title} - Das {getTimeBrasiliaTimeZone(entries.human_start_time)} às {getTimeBrasiliaTimeZone(entries.human_end_time)}</Typography>
+                                    <Typography className={classes.heading}>&nbsp;&nbsp; {handleActiveProgram(entries.title, entries.human_start_time, entries.human_end_time) ? <span className="liveNow"> <MdLiveTv></MdLiveTv> EXIBINDO AGORA: </span> : ''} {entries.title} - Das {getTimeBrasiliaTimeZone(entries.human_start_time)} às {getTimeBrasiliaTimeZone(entries.human_end_time)}</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
                                     <Grid item xs={6}>
