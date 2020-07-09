@@ -10,6 +10,7 @@ Para alcançar uma qualidade melhor de visualização para o usuário final deci
 Para executar:
   - npm install
   - npm run dev
+OBS: O servidor executará em: http://localhost:3333
   
 Dependências e motivos de utilização das mesmas:
   - express: para acelerar o desenvolvimento da API com conceitos como rotas, MVC, cors e etc
@@ -25,6 +26,7 @@ Melhorias desejadas:
 Para executar:
   - npm install
   - npm start
+OBS: O projeto react executará em: http://localhost:3000
   
 Dependências e motivos de utilização das mesmas:
   - material-ui-react: acelerar o processo de desenvolvimento com componentes prontos
