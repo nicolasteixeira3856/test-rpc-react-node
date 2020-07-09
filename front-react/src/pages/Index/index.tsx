@@ -58,20 +58,20 @@ const Index = () => {
         })
     }, []);
 
-    function handleActiveProgram(startTime: string, endTime: string) {
+    function handleActiveProgram(title: string, startTime: string, endTime: string) {
         const localTimeNow = moment().local();
         const startTimeFormatted = moment(localTimeNow.toISOString().slice(0,10) + ' ' + startTime).local();
         const endTimeFormatted = moment(localTimeNow.toISOString().slice(0,10) + ' ' + endTime).local();
 
-        if (localTimeNow.isBetween(startTimeFormatted, endTimeFormatted)) {
+        if (localTimeNow.isBetween(startTimeFormatted, endTimeFormatted, undefined, '[]')) {
             return true;
         }
 
         return false;
     }
 
-    function getStartTimeBrasiliaTimeZone (startTime: string) {
-        return moment(moment().local().toISOString().slice(0,10) + ' ' + startTime).local().format("HH:mm");
+    function getTimeBrasiliaTimeZone (time: string) {
+        return moment(moment().local().toISOString().slice(0,10) + ' ' + time).local().format("HH:mm");
     }
 
     return (
@@ -89,14 +89,15 @@ const Index = () => {
                                     aria-controls={entries.media_id.toString()}
                                     id={entries.media_id.toString()}>
                                     <img className="logo" src={entries.custom_info.Graficos.LogoURL} alt={entries.title}/>
-                                    <Typography className={classes.heading}>&nbsp;&nbsp; {handleActiveProgram(entries.human_start_time, entries.human_end_time) ? <span className="liveNow"> <MdLiveTv></MdLiveTv> EXIBINDO AGORA - </span> : ''} {getStartTimeBrasiliaTimeZone(entries.human_start_time)} - {entries.title}</Typography>
+                                    <Typography className={classes.heading}>&nbsp;&nbsp; {handleActiveProgram(entries.title, entries.human_start_time, entries.human_end_time) ? <span className="liveNow"> <MdLiveTv></MdLiveTv> EXIBINDO AGORA </span> : ''} - {entries.title} - Das {getTimeBrasiliaTimeZone(entries.human_start_time)} às {getTimeBrasiliaTimeZone(entries.human_end_time)}</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
                                     <Grid item xs={6}>
                                         <img className="image" src={entries.custom_info.Graficos.ImagemURL} alt={entries.title}/>
                                     </Grid>
                                     <Grid item xs={6}>
-                                        <p>{entries.description}</p>
+                                        <p>{entries.title}</p>
+                                        <p>Descrição: {entries.description}</p>
                                     </Grid>
                                 </AccordionDetails>
                             </Accordion>          
