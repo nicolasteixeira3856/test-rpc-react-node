@@ -6,7 +6,7 @@ Para alcançar uma qualidade melhor de visualização para o usuário final deci
  ## Bugs conhecidos
   - Devido as datas da API da RPC pode ocorrer da aplicação React não exibir o que está passando no momento, isso se deve pelo fato das diferenças de segundos/minutos entre um programa e outro, como por exemplo: Malhação - Viva a Diferença termina às 18:23:21 e o próximo programa Novo Mundo começa às 18:23:41, se o cliente acessar o site durante essa diferença de segundos será apresentado como se nada estivesse sendo exibido na televisão.
 
-## Projeto back-end feito em NodeJS
+## Projeto back-end feito em NodeJS: server-node
 Para executar:
   - npm install
   - npm run dev
@@ -21,7 +21,7 @@ Melhorias desejadas:
   - Melhorar as mensagens de erro no geral, devolvendo erros mais expressivos e de fácil compreensão para o usuário que utilizar a API
   - Tratar os dados do JSON da API da RPC no back-end, enviando assim para o front um JSON mais "limpo"
 
-## Projeto front-end feito em ReactJS
+## Projeto front-end feito em ReactJS: web-react
 Para executar:
   - npm install
   - npm start
