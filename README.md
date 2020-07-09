@@ -1,6 +1,6 @@
 # TestePratico-RPC
 
-## Por que a separação em dois projetos, sendo um front e outro back? 
+## Por que a separação em dois projetos, sendo um front(web-react) e outro back(server-node)? 
 Para alcançar uma qualidade melhor de visualização para o usuário final decidi realizar um outro projeto onde pudesse construir um front-end mais robusto, sem precisar utilizar soluções de template render como react-template-render, Pug, Nunjucks e etc.
 
  ## Bugs conhecidos
@@ -19,6 +19,7 @@ Dependências e motivos de utilização das mesmas:
 Melhorias desejadas:
   - Adicionar regex a rota /getRPCProgramming/:date para aceitar apenas datas do formato americano (yyyy-mm-dd)
   - Melhorar as mensagens de erro no geral, devolvendo erros mais expressivos e de fácil compreensão para o usuário que utilizar a API
+  - Tratar os dados do JSON da API da RPC no back-end, enviando assim para o front um JSON mais "limpo"
 
 ## Projeto front-end feito em ReactJS
 Para executar:
@@ -36,4 +37,6 @@ Melhorias desejadas:
   - Auto-scroll para o programa em exibição no momento
   - Expandir o accordion do programa em exibição no momento
   - Adicionar um input do tipo date no começo da página, que seja definido a principio para o dia da data que o usuário entrar no site, mas que dê a opção de alterar para qualquer dia e mês que desejar
+  - Adicionar uma sessão de "em instantes" para caso ocorra o que está mencionado na seção de bugs conhecidos desse readme
+  - Efetuar alteração da trativa do JSON de retorno da API RPC para o back-end
   
