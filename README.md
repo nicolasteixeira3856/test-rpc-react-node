@@ -3,6 +3,9 @@
 ## Por que a separação em dois projetos, sendo um front e outro back? 
 Para alcançar uma qualidade melhor de visualização para o usuário final decidi realizar um outro projeto onde pudesse construir um front-end mais robusto, sem precisar utilizar soluções de template render como react-template-render, Pug, Nunjucks e etc.
 
+ ## Bugs conhecidos
+  - Devido as datas da API da RPC pode ocorrer da aplicação React não exibir o que está passando no momento, isso se deve pelo fato das diferenças de segundos/minutos entre um programa e outro, como por exemplo: Malhação - Viva a Diferença termina às 18:23:21 e o próximo programa Novo Mundo começa às 18:23:41, se o cliente acessar o site durante essa diferença de segundos será apresentando como se nada estivesse exibindo na televisão.
+
 ## Projeto back-end feito em NodeJS
 Para executar:
   - npm install
@@ -33,7 +36,4 @@ Melhorias desejadas:
   - Auto-scroll para o programa em exibição no momento
   - Expandir o accordion do programa em exibição no momento
   - Adicionar um input do tipo date no começo da página, que seja definido a principio para o dia da data que o usuário entrar no site, mas que dê a opção de alterar para qualquer dia e mês que desejar
- 
- ## Bugs conhecidos
-  - Devido as datas da API da RPC pode ocorrer da aplicação React não exibir o que está passando no momento, isso se deve pelo fato das diferenças de segundos/minutos entre um programa e outro, como por exemplo: Malhação - Viva a Diferença termina às 18:23:21 e o próximo programa Novo Mundo começa às 18:23:41, se o cliente acessar o site durante essa diferença de segundos será apresentando como se nada estivesse exibindo na televisão.
   
