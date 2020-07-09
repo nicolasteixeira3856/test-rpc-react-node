@@ -4,7 +4,7 @@
 Para alcançar uma qualidade melhor de visualização para o usuário final decidi realizar um outro projeto onde pudesse construir um front-end mais robusto, sem precisar utilizar soluções de template render como react-template-render, Pug, Nunjucks e etc.
 
  ## Bugs conhecidos
-  - Devido as datas da API da RPC pode ocorrer da aplicação React não exibir o que está passando no momento, isso se deve pelo fato das diferenças de segundos/minutos entre um programa e outro, como por exemplo: Malhação - Viva a Diferença termina às 18:23:21 e o próximo programa Novo Mundo começa às 18:23:41, se o cliente acessar o site durante essa diferença de segundos será apresentando como se nada estivesse exibindo na televisão.
+  - Devido as datas da API da RPC pode ocorrer da aplicação React não exibir o que está passando no momento, isso se deve pelo fato das diferenças de segundos/minutos entre um programa e outro, como por exemplo: Malhação - Viva a Diferença termina às 18:23:21 e o próximo programa Novo Mundo começa às 18:23:41, se o cliente acessar o site durante essa diferença de segundos será apresentado como se nada estivesse sendo exibido na televisão.
 
 ## Projeto back-end feito em NodeJS
 Para executar:
