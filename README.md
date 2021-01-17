@@ -1,4 +1,49 @@
-# TestePratico-RPC
+# English
+
+## Why the separation in two projects, being a front (web-react) and another back (server-node)?
+To achieve a better quality of visualization for the end user I decided to carry out another project where I could build a more robust front end, without having to use template render solutions such as react-template-render, Pug, Nunjucks and etc.
+
+ ## Known bugs
+  - Due to the dates of the RPC API, the React application may not show what is happening at the moment, this is due to the fact that the seconds / minutes differ between one program and another, such as: Malhação - Viva a Diferença ends at 18:23:21 and the next New World program starts at 18:23:41, if the customer accesses the site during this time difference, it will be presented as if nothing is being shown on television.
+
+## Back-end project made in NodeJS: server-node
+To execute:
+  - npm install
+  - npm run dev
+  - The server will run at: http: // localhost: 3333
+  
+Dependencies and reasons for using them:
+  - express: to accelerate the development of the API with concepts such as routes, MVC, cors and etc.
+  - axios: I decided to use Axios to facilitate the work with requests for the RPC API
+  - cors: to accept cross-origin resource sharing
+  
+Desired improvements:
+  - Add regex to the route / getRPCProgramming /: date to accept only dates in the American format (yyyy-mm-dd)
+  - Improve error messages in general, returning more expressive and easy to understand errors for the user using the API
+  - Treat the JSON data of the RPC API on the back end, thus sending a cleaner "JSON" to the front
+
+## Front-end project done in ReactJS: web-react
+To execute:
+  - npm install
+  - npm start
+  - The react project will run at: http: // localhost: 3000
+  
+Dependencies and reasons for using them:
+  - material-ui-react: accelerate the development process with ready-made components
+  - axios: I decided to use Axios to facilitate work with requests for the simple API built in NodeJS
+  - moment: the use of momentjs is mainly due to the ease it brings with it to work with dates (comparisons, formatting, etc.)
+  - moment-timezone: to complement moment with possibilities for formatting timezones (for example: formatting a date in Brasília time)
+  - react-icons: react-icons is a robust library that brings a very diverse range of icons to the system, such as Material Design Icons, Font Awesome, Feather, Bootstrap Icons and etc.
+  
+Desired improvements:
+  - Auto-scroll for the program currently playing
+  - Expand the accordion of the program currently playing
+  - Add an input of type date at the beginning of the page, which is defined in principle for the day of the date that the user enters the site, but which gives the option to change to any day and month that he wishes
+  - Add a "in a moment" session in case the mentioned bugs section of this readme occurs
+  - Make changes in the JSON from the RPC API in the backend
+  - Add a loading spinner if the project has not yet completed the request for the back-end
+  
+# Português
 
 ## Por que a separação em dois projetos, sendo um front(web-react) e outro back(server-node)? 
 Para alcançar uma qualidade melhor de visualização para o usuário final decidi realizar um outro projeto onde pudesse construir um front-end mais robusto, sem precisar utilizar soluções de template render como react-template-render, Pug, Nunjucks e etc.
